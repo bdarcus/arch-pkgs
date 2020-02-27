@@ -1,23 +1,28 @@
-# Maintainer: Michael Daffin <michael@daffin.io>
-pkgbase=mdaffin-desktop
-pkgname=(mdaffin-desktop mdaffin-laptop mdaffin-dell-xps-13)
+# Maintainer: 
+pkgbase=bdarcus-desktop
+pkgname=(bdarcus-desktop bdarcus-laptop)
 pkgver=35
 pkgrel=1
-pkgdesc="System config for mdaffin systems"
+pkgdesc="System config for bdarcus systems"
 arch=(any)
-url="https://github.com/mdaffin/arch-repo"
+url="https://github.com/bdarcus/arch-repo"
 license=(MIT)
 groups=(mdaffin)
 
 rootdir=$PWD
 
 package_mdaffin-desktop() {
-    install=mdaffin-desktop.install
+    install=bdarcus-desktop.install
 
-    depends=(mdaffin-base)
+    depends=(bdarcus-base)
+
+    # TODO need to fix all this for gnome, and remove other stuff
+    depends+=(
+	gnome
+    )
 
     # I3 Desktop
-    depends+=(i3-wm i3status i3blocks i3lock rofi)
+    # depends+=(i3-wm i3status i3blocks i3lock rofi)
 
     depends+=(
         sway swaylock swayidle xorg-server-xwayland wl-clipboard brightnessctl
@@ -68,11 +73,12 @@ package_mdaffin-desktop() {
     cp -a "$rootdir/files-desktop/"* "$pkgdir"
 }
 
-package_mdaffin-laptop() {
-    depends=('mdaffin-desktop' 'powertop')
-}
-
-package_mdaffin-dell-xps-13() {
-    depends=('mdaffin-laptop')
-    cp -a "$rootdir/files-dell-xps-13/"* "$pkgdir"
-}
+# TODO figure out how to adapt?
+#package_bdarcus-laptop() {
+#    depends=('bdarcus-desktop' 'powertop')
+#}
+#
+#package_mdaffin-dell-xps-13() {
+#    depends=('bdarcus-laptop')
+#    cp -a "$rootdir/files-dell-xps-13/"* "$pkgdir"
+#}

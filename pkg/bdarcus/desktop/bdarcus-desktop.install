@@ -4,7 +4,7 @@ post_install() {
 
 post_upgrade() {
     ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-    cp /usr/share/mdaffin/etc/i3/config /etc/i3/config
+# TODO use mine instead
     cp /usr/share/mdaffin/etc/libinput-gestures.conf /etc/libinput-gestures.conf
-    echo "include /etc/sway/config.d/*" > /etc/sway/config
+#    echo "include /etc/sway/config.d/*" > /etc/sway/config
 }
